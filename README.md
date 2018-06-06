@@ -5,7 +5,7 @@ This sript does work with the API v2.
 
 Save your _ACCESS TOKEN_ in a environment variables. The access token can be obtained after you have created your application in the follow <a href="https://www.dropbox.com/developers">link</a>.
 
-Open the script and replace ```<ACCESS_TOKEN_DROPBOX>```for the name of your environment variables.
+Open the script and replace ```<ACCESS_TOKEN_DROPBOX>``` with your actual access token.
 
 install DropBox, using:
 
@@ -13,17 +13,24 @@ install DropBox, using:
 pip install dropbox
 ```
 
+Also replace ```<WEBHOOK_URL_SLACK>``` with the actual incoming webhook URL of your Slack application.
+More on that can be found <a href="https://api.slack.com/incoming-webhooks">here</a>.
+
+Replace ```<USER_SLACK>``` with the identifier of the Slack user to be notified.
+Replace ```<BOT_SLACK>``` with the identifier of the channel used by your application to interact with Slack users.
+
 ## Usage
 
-```
-python dropbox_uploader.py path_file
-```
+The script is intented to be executed as an AGI script right at hangup.
+Here is a example of macro for the extensions plan that will thus call the uploader script.
 
 ```
-python dropbox_uploader.py path_file dest_path
-```
+[macro-hangupcall]
+exten => s,1,AGI(dropbox_uploader.agi,${ASTSPOOLDIR}/monitor/${YEAR}/${MONTH}/${DAY}/${CDR(recordingfile)},/${CDR(recordingfile)})
+exten => s,n,Hangup
+exten => s,n,MacroExit()
 
-> If we dont especify the dest_path the default will be the same route (path_file)
+```
 
 ### Based on the work of @eduardo_gpg
 
