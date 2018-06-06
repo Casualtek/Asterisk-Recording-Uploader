@@ -3,7 +3,7 @@
 Simple Python __script__ to upload a new Asterisk recording to DropBox, and notify via Slack
 This sript does work with the API v2.
 
-Save your _ACCESS TOKEN_ in a environment variables. The access token can be obtained after you have created your application in the follow <a href="https://www.dropbox.com/developers", target="_blank"> link </a>
+Save your _ACCESS TOKEN_ in a environment variables. The access token can be obtained after you have created your application in the follow <a href="https://www.dropbox.com/developers">link</a>.
 
 Open the script and replace ```<ACCESS_TOKEN_DROPBOX>```for the name of your environment variables.
 
